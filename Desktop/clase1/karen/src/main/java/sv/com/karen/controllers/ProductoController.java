@@ -53,9 +53,7 @@ public class ProductoController {
 	
 	@RequestMapping(value="/agregarprod", method=RequestMethod.POST)
 	public String guardar(@Valid Producto producto, BindingResult bindingResult, RedirectAttributes flash, SessionStatus sessionStatus ) {
-		if(bindingResult.hasErrors()) {
-			return "producto";
-		}
+
 		productoService.save(producto);
 		sessionStatus.setComplete();
 		

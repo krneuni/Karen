@@ -36,12 +36,11 @@ public class DetalleVenta implements Serializable{
 	@SequenceGenerator(name = "detalleventas_Seq", sequenceName = "DETALLEVENTAS_SEQ")
 	private Long id; 
 	
-	@NotEmpty
+
 	@Column(name="Cantidad")
 	//@NotEmpty
 	private int Cantidad;
 	
-	@NotEmpty
 	@Column(name="Descuento")
 	//@NotEmpty
 	private int Descuento;

@@ -74,10 +74,12 @@ public class InventarioController {
 			flash.addFlashAttribute("error","El Id no puede ser cero");
 			return "redirect:/inventario/inventario";
 		}
-		model.put("detalle", inventario);
+		model.put("Inventario", inventario);
+
+		model.put("Productos", productoService.findAll());
 		model.put("titulo", "Editar");
 		
-		return "inventario";
+		return "agregarinv";
 	}
 	
 	@RequestMapping(value="/eliminar/{id}")

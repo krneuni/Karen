@@ -39,7 +39,7 @@ public class VentaController {
 	@RequestMapping(value="/venta", method=RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo","listado de venta");
-		model.addAttribute("venta", ventaService.findAll());
+		model.addAttribute("ventas", ventaService.findAll());
 		return "venta";
 	}
 	
@@ -53,9 +53,6 @@ public class VentaController {
 	
 	@RequestMapping(value="/agregarventa", method=RequestMethod.POST)
 	public String guardar(@Valid Venta venta, BindingResult bindingResult, RedirectAttributes flash, SessionStatus sessionStatus ) {
-		if(bindingResult.hasErrors()) {
-			return "agregarventa";
-		}
 		ventaService.save(venta);
 		sessionStatus.setComplete();
 		

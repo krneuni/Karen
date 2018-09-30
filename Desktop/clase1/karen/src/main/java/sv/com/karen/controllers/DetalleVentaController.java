@@ -39,43 +39,37 @@ public class DetalleVentaController {
 	@RequestMapping(value="/detalleventa", method=RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo","Detalle de Ventas");
-		model.addAttribute("detalle", DetalleVentaService.findAll());
+		model.addAttribute("detalleventas", DetalleVentaService.findAll());
 		return "detalleventa";
 	}
 	
 	@RequestMapping(value="/agregardv", method=RequestMethod.GET)
 	public String form(Map<String, Object> model) {
 		DetalleVenta detalleventa = new DetalleVenta();
-		model.put("detalle", detalleventa);
+		model.put("detalleventa", detalleventa);
 		model.put("titulo", "Formulario de Detalles de Venta");
 		return "agregardv";
 	}
 	
 	@RequestMapping(value="/agregardv", method=RequestMethod.POST)
 	public String guardar(@Valid DetalleVenta detalleventa, BindingResult bindingResult, RedirectAttributes flash, SessionStatus sessionStatus ) {
-		if(bindingResult.hasErrors()) {
-			return "agregardv";
-		}
+
 		DetalleVentaService.save(detalleventa);
 		sessionStatus.setComplete();
 		
 		flash.addFlashAttribute("success","Detalle creado con exito");
-		return "redirect:/detalleVenta/detalleventa";
+		return "redirect:/detalleventa/detalleventa";
 	}
 	
 	@RequestMapping(value="/agregardv/{id}")
 	public String editar(@PathVariable(value="id") Long id, Map<String, Object> model, RedirectAttributes flash) {
 		DetalleVenta detalleventa  = null;
-		if (id > 0) {
-			detalleventa = DetalleVentaService.findOne(id);
-		}else {
-			flash.addFlashAttribute("error","El Id no puede ser cero");
-			return "redirect:/detalleventa/detalleventa";
-		}
-		model.put("detalle", detalleventa);
+		detalleventa = DetalleVentaService.findOne(id);
+		System.out.println(id);
+		model.put("detalleventa", detalleventa);
 		model.put("titulo", "Editar Detalle");
 		
-		return "detalleventa";
+		return "agregardv";
 	}
 	
 	@RequestMapping(value="/eliminar/{id}")
