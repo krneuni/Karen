@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+	<html xmlns:th="http://www.thymeleaf.org"> 
+		<head> 
+			<meta charset="UTF-8" /> 
+			<title>Clientes</title> 
+			<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  /> 
+		</head> 
+	<body> 
+		<div class="container"> 
+			<table class="table">  
+				<thead>   
+					<tr>      
+						<th scope="col">id</th>      
+						<th scope="col">Nombre</th>      
+						<th scope="col">Precio Compra</th>      
+						<th scope="col">Fecha de Vencimiento</th>      
+						<th scope="col">Estado</th>   
+					</tr>  
+				</thead>  
+					<tbody>   
+						 <tr th:each="producto: ${productos}">      
+							 <td th:text="${producto.id}"/>      
+							 <td th:text="${producto.Nombre}" />      
+							 <td th:text="${producto.PrecioVenta}" />      
+							 <td th:text="${producto.PrecioCompra}" /> 
+							 <td th:text="${producto.FechaVenc}" />  
+							 <td th:text="${producto.Estado}" /> 							 
+							    
+							 <td> <a th:href="@{/producto/agregarprod/} + ${producto.id}" th:text="'Editar'" class="btn btn-primary btn-xs" >
+							 </a>
+							 </td>      
+							 <td> 
+							 <a th:href="@{/producto/eliminar/} + ${producto.id}" th:text="'Eliminar'" class="btn btn-danger btn-xs" onclick="return confirm('Estas seguro?')" >
+							 </a>
+							 </td>   
+						 </tr>  
+					</tbody> 
+			</table> 
+		</div> 
+	 
+			<a th:href="@{/producto/agregarprod}">Crear producto</a> 
+	 
+	</body> 
+</html>
