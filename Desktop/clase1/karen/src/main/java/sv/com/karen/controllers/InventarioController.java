@@ -58,9 +58,6 @@ public class InventarioController {
 	
 	@RequestMapping(value="/agregarinv", method=RequestMethod.POST)
 	public String guardar(@Valid Inventario inventario, BindingResult bindingResult, RedirectAttributes flash, SessionStatus sessionStatus ) {
-		if(bindingResult.hasErrors()) {
-			return "agregarinv";
-		}
 		InventarioService.save(inventario);
 		sessionStatus.setComplete();
 		

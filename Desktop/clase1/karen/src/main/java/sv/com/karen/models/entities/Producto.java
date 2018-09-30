@@ -51,6 +51,8 @@ public class Producto implements Serializable{
 	
 	
 	@Column(name="FechaVenc")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	//@NotEmpty
 	private Date FechaVenc;
 	
