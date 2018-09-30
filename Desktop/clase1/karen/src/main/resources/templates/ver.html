@@ -2,27 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Insert title here</title>
+<title>Beauty Salon</title>
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
-	<div class="container">
-	
-	<ul class="list-group">
-					<li class="list-group-item active" th:text="${proveedor.proveedorName}"></li>
-					<li class="list-group-item" th:text="${proveedor.nit_emp}"></li>
-					<li class="list-group-item" th:text="${proveedor.dir_emp}"></li>
-					<li class="list-group-item" th:text="${proveedor.tel_emp}"></li>
-				</ul>
-	<a th:href="@{/form}">Crear cliente</a>
-
-
-	<!-- <td><a th:href="@{/form/} + ${customer.id}" th:text="'Editar'"
-						class="btn btn-primary btn-xs"></a></td>
-					<td><a th:href="@{/eliminar/} + ${customer.id}"
-						th:text="'Eliminar'" class="btn btn-danger btn-xs"
-						onclick="return confirm('Estas seguro?')"></a></td> -->
-
-
+	<center><h2>Menu Beauty Salon</h2></center>
+	<ul>
+		<li>
+			<a href="/proveedor/listar">Proveedor </a>
+			
+		</li>
+		<li>
+			<a href="/compra/compra">Compras </a>
+		</li>
+		
+		<li>
+		<a href="/inventario/inventario">Inventario </a>
+			
+		</li>
+		
+		<li>
+		<a href="/producto/producto">Productos </a>
+			</li>
+		<li>
+			<a href="/venta/venta">Ventas </a>
+			
+		</li>
+		<li>
+			<a href="/detalleventa/detalleventa">Detalle de Ventas </a>
+		</li>
+	</ul>
 </body>
 </html>

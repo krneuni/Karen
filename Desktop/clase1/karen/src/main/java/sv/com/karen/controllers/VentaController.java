@@ -25,71 +25,66 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import sv.com.karen.models.entities.Inventario;
-import sv.com.karen.models.services.IInventarioService;
-import sv.com.karen.models.services.IProductoService; 
+import sv.com.karen.models.entities.Venta;
+import sv.com.karen.models.services.IVentaService; 
 
 @Controller
-@SessionAttributes("inventario")
-@RequestMapping(value="/inventario")
-public class InventarioController {
+@SessionAttributes("venta")
+@RequestMapping(value="/venta")
+public class VentaController {
 
 	@Autowired
-	private IInventarioService InventarioService;
-	
-	@Autowired
-	private IProductoService productoService;
+	private IVentaService ventaService;
 
-	@RequestMapping(value="/inventario", method=RequestMethod.GET)
+	@RequestMapping(value="/venta", method=RequestMethod.GET)
 	public String listar(Model model) {
-		model.addAttribute("titulo","Detalle de Inventario");
-		model.addAttribute("Inventario", InventarioService.findAll());
-		return "inventario";
+		model.addAttribute("titulo","listado de venta");
+		model.addAttribute("venta", ventaService.findAll());
+		return "venta";
 	}
 	
-	@RequestMapping(value="/agregarinv", method=RequestMethod.GET)
+	@RequestMapping(value="/agregarventa", method=RequestMethod.GET)
 	public String form(Map<String, Object> model) {
-		Inventario inventario = new Inventario();
-		model.put("Inventario", new Inventario());
-		model.put("titulo", "Formulario de Inventario");
-		model.put("Productos", productoService.findAll());
-		return "agregarinv";
+		Venta venta = new Venta();
+		model.put("venta", venta);
+		model.put("titulo", "Formulario de venta");
+		return "agregarventa";
 	}
 	
-	@RequestMapping(value="/agregarinv", method=RequestMethod.POST)
-	public String guardar(@Valid Inventario inventario, BindingResult bindingResult, RedirectAttributes flash, SessionStatus sessionStatus ) {
+	@RequestMapping(value="/agregarventa", method=RequestMethod.POST)
+	public String guardar(@Valid Venta venta, BindingResult bindingResult, RedirectAttributes flash, SessionStatus sessionStatus ) {
 		if(bindingResult.hasErrors()) {
-			return "agregarinv";
+			return "agregarventa";
 		}
-		InventarioService.save(inventario);
+		ventaService.save(venta);
 		sessionStatus.setComplete();
 		
-		flash.addFlashAttribute("success","Creado con exito");
-		return "redirect:/inventario/inventario";
+		flash.addFlashAttribute("success","Venta creado con exito");
+		return "redirect:/venta/venta";
 	}
 	
-	@RequestMapping(value="/agregarinv/{id}")
+	@RequestMapping(value="/agregarventa/{id}")
 	public String editar(@PathVariable(value="id") Long id, Map<String, Object> model, RedirectAttributes flash) {
-		Inventario inventario  = null;
+		Venta venta = null;
 		if (id > 0) {
-			inventario = InventarioService.findOne(id);
+			venta = ventaService.findOne(id);
 		}else {
-			flash.addFlashAttribute("error","El Id no puede ser cero");
-			return "redirect:/inventario/inventario";
+			flash.addFlashAttribute("error","El Id de la venta no puede ser cero");
+			return "redirect:/venta/agregarventaa";
 		}
-		model.put("detalle", inventario);
-		model.put("titulo", "Editar");
+		model.put("venta", venta);
+		model.put("titulo", "Editar venta");
 		
-		return "inventario";
+		return "agregarventa";
 	}
 	
 	@RequestMapping(value="/eliminar/{id}")
 	public String eliminar(@PathVariable(value="id") Long id, RedirectAttributes flash) {
 		if (id > 0 ) {
-			InventarioService.delete(id);
+			ventaService.delete(id);
 		}
-		flash.addFlashAttribute("success","Eliminado con exito");
-		return "redirect:/inventario/inventario";
+		flash.addFlashAttribute("success","venta eliminado con exito");
+		return "redirect:/venta/venta";
 	}
 	
 }

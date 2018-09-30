@@ -1,4 +1,5 @@
 package sv.com.karen.models.entities;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,23 +25,30 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@Table(name="inventarios")
-public class Inventario implements Serializable{
+@Table(name="ventas")
+public class Venta implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "inventarios_Seq")
-	@SequenceGenerator(name = "inventarios_Seq", sequenceName = "INVENTARIO_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "compras_Seq")
+	@SequenceGenerator(name = "compras_Seq", sequenceName = "COMPRAS_SEQ")
 	private Long id; 
 	
-	@Column(name="Cantidad")
-	@NotEmpty
-	private String Cantidad;
 	
-	@Column(name="Idproducto")
-	private int Idproducto;
+	
+	@Column(name="numfactura")
+	@NotEmpty
+	private String numfactura;
+	
+	@Column(name="FechaVenta")
+	//@NotEmpty
+	private Date FechaVenta;
+	
+	@Column(name="PrecioVenta")
+	//@NotEmpty
+	private float PrecioVenta;
 
 	public Long getId() {
 		return id;
@@ -50,24 +58,32 @@ public class Inventario implements Serializable{
 		this.id = id;
 	}
 
-	public String getCantidad() {
-		return Cantidad;
+	public String getNumfactura() {
+		return numfactura;
 	}
 
-	public void setCantidad(String cantidad) {
-		Cantidad = cantidad;
+	public void setNumfactura(String numfactura) {
+		this.numfactura = numfactura;
+	}
+
+	public Date getFechaVenta() {
+		return FechaVenta;
+	}
+
+	public void setFechaVenta(Date fechaVenta) {
+		FechaVenta = fechaVenta;
+	}
+
+	public float getPrecioVenta() {
+		return PrecioVenta;
+	}
+
+	public void setPrecioVenta(float precioVenta) {
+		PrecioVenta = precioVenta;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-
-	public int getIdproducto() {
-		return Idproducto;
-	}
-
-	public void setIdproducto(int idproducto) {
-		Idproducto = idproducto;
 	}
 	
 	

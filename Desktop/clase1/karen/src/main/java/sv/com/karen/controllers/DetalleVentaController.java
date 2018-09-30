@@ -60,7 +60,7 @@ public class DetalleVentaController {
 		sessionStatus.setComplete();
 		
 		flash.addFlashAttribute("success","Detalle creado con exito");
-		return "redirect:/DetalleVenta/detalleventa";
+		return "redirect:/detalleVenta/detalleventa";
 	}
 	
 	@RequestMapping(value="/agregardv/{id}")

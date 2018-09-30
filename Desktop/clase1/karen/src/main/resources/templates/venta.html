@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+	<html xmlns:th="http://www.thymeleaf.org"> 
+		<head> 
+			<meta charset="UTF-8" /> 
+			<title>Ventas</title> 
+			<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  /> 
+		</head> 
+	<body> 
+		<div class="container"> 
+			<table class="table">  
+				<thead>   
+					<tr>      
+						<th scope="col">id</th>      
+						<th scope="col">Numero de Factura</th>      
+						<th scope="col">Fecha Venta</th>      
+						<th scope="col">Precio Venta</th>      
+						   
+					</tr>  
+				</thead>  
+					<tbody>   
+						 <tr th:each="venta: ${ventas}">      
+							 <td th:text="${venta.id}"/>      
+							 <td th:text="${venta.numfactura}" />      
+							 <td th:text="${venta.FechaVenta}" />      
+							 <td th:text="${venta.PrecioVenta}" />    
+							    
+							 <td> <a th:href="@{/venta/agregarventa/} + ${venta.id}" th:text="'Editar'" class="btn btn-primary btn-xs" >
+							 </a>
+							 </td>      
+							 <td> 
+							 <a th:href="@{/venta/eliminar/} + ${venta.id}" th:text="'Eliminar'" class="btn btn-danger btn-xs" onclick="return confirm('Estas seguro?')" >
+							 </a>
+							 </td>   
+						 </tr>  
+					</tbody> 
+			</table> 
+		</div> 
+	 
+			<a th:href="@{/venta/agregarventa}">Crear venta</a> 
+	 
+	</body> 
+</html>
