@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+	<html xmlns:th="http://www.thymeleaf.org"> 
+		<head> 
+			<meta charset="UTF-8" /> 
+			<title>Inventario</title> 
+			<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  /> 
+		</head> 
+	<body> 
+		<div class="container"> 
+			<table class="table">  
+				<thead>   
+					<tr>      
+						<th scope="col">id</th>      
+						<th scope="col">Cantidad</th>   
+					</tr>  
+				</thead>  
+					<tbody>   
+						 <tr th:each="inventario: ${inventarios}">      
+							 <td th:text="${inventario.id}"/>      
+							 <td th:text="${inventario.Cantidad}" />      
+							   
+							    
+							 <td> <a th:href="@{/inventario/agregarinv/} + ${inventario.id}" th:text="'Editar'" class="btn btn-primary btn-xs" >
+							 </a>
+							 </td>      
+							 <td> 
+							 <a th:href="@{/inventario/eliminar/} + ${inventario.id}" th:text="'Eliminar'" class="btn btn-danger btn-xs" onclick="return confirm('Estas seguro?')" >
+							 </a>
+							 </td>   
+						 </tr>  
+					</tbody> 
+			</table> 
+		</div> 
+	 
+			<a th:href="@{/inventario/agregarinv}">Nuevo inventario</a> 
+	 
+	</body> 
+</html>

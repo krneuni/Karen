@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+	<html xmlns:th="http://www.thymeleaf.org"> 
+		<head> 
+			<meta charset="UTF-8" /> 
+			<title>Clientes</title> 
+			<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  /> 
+		</head> 
+	<body> 
+		<div class="container"> 
+			<table class="table">  
+				<thead>   
+					<tr>      
+						<th scope="col">id</th>      
+						<th scope="col">Nombre Cliente</th>      
+						<th scope="col">Edad</th>      
+						<th scope="col">Direccion</th>      
+						<th scope="col">Telefono</th>   
+					</tr>  
+				</thead>  
+					<tbody>   
+						 <tr th:each="cliente: ${clientes}">      
+							 <td th:text="${cliente.id}"/>      
+							 <td th:text="${cliente.NombreCliente}" />      
+							 <td th:text="${cliente.Edad}" />      
+							 <td th:text="${cliente.dir_cliente}" /> 
+							 <td th:text="${cliente.tel_cliente}" />      
+							    
+							 <td> <a th:href="@{/cliente/agregar/} + ${cliente.id}" th:text="'Editar'" class="btn btn-primary btn-xs" >
+							 </a>
+							 </td>      
+							 <td> 
+							 <a th:href="@{/cliente/eliminar/} + ${cliente.id}" th:text="'Eliminar'" class="btn btn-danger btn-xs" onclick="return confirm('Estas seguro?')" >
+							 </a>
+							 </td>   
+						 </tr>  
+					</tbody> 
+			</table> 
+		</div> 
+	 
+			<a th:href="@{/cliente/agregar}">Crear cliente</a> 
+	 
+	</body> 
+</html>

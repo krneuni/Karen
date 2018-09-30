@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title th:text="${titulo}">Añadir</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  />
+</head>
+<body>
+<div class="container">
+<form th:action="@{/proveedor/form}" th:object="${proveedor}" method="post" >
+	<div class="form-group">
+    	<label for="proveedorName">Nombre del proveedor</label>
+    	<input type="text" class="form-control"  placeholder="Ingrese nombre" th:field="*{proveedorName}"/>
+    	
+  	</div>
+	
+	<div class="form-group">
+    	<label for="nit_emp">NIT</label>
+    	<input type="text" class="form-control"  placeholder="Ingrese NIT" th:field="*{nit_emp}"/>
+    	
+  	</div>
+
+	<div class="form-group">
+    	<label for="dir_emp">Dirección</label>
+    	<input type="text" class="form-control"  placeholder="Ingrese su dirección" th:field="*{dir_emp}"/>
+    	
+  	</div>
+
+	<div class="form-group">
+    	<label for="tel_emp">Telefono</label>
+    	<input type="text" class="form-control"  placeholder="Ingrese su telefono" th:field="*{tel_emp}"/>
+    	
+  	</div>
+  	
+  	
+  	<div class="form-group">
+    	<label for="email">E-mail</label>
+    	<input type="text" class="form-control"  placeholder="Ingrese su email" th:field="*{email}"/>
+    	
+  	</div>
+	
+	<div class="form-group">
+    	<label for="nombre_contacto">Nombre de contacto: </label>
+    	<input type="text" class="form-control"  placeholder="Ingrese el nombre de contacto: " th:field="*{nombre_contacto}"/>
+    	
+  	</div>
+  	
+  	<div class="form-group">
+    	<label for="tel_contacto">Telefono de contacto: </label>
+    	<input type="text" class="form-control"  placeholder="Ingrese el telefono de contacto: " th:field="*{tel_contacto}"/>
+    	
+  	</div>
+	
+  	<input type="submit" value="Ingresar" />
+</form>
+</div>
+</body>
+</html>

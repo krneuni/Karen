@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:fragment="head"> 
+<meta charset="utf-8" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> 
+<meta name="description" content="" /> 
+<meta name="author" content="" /> 
+<title th:text="${title}"></title> 
+<link rel="icon" th:href="@{/img/favicon.ico}"> 
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" /> 
+<link rel="stylesheet" th:href="@{/css/dashboard.css}"> 
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> 
+</head> 
+<body> 
+<header th:fragment="header"> 
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"> 
+<h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5> 
+<nav class="my-2 my-md-0 mr-md-3"> 
+<a class="p-2 text-dark" href="#">Features</a> 
+<aclass="p-2 text-dark" href="#">Enterprise</a> 
+<a class="p-2 text-dark" href="#">Support</a> 
+<a class="p-2 text-dark" href="#">Pricing</a> 
+</nav> 
+<a class="btn btn-outline-primary" href="#">Sign up</a> 
+</div> 
+<div class="alert alert-success" th:if="${success != null}" th:text="${success}">
+</div> 
+<div class="alert alert-danger" th:if="${error != null}" th:text="${error}">
+</div> 
+<div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}">
+</div> 
+<div class="alert alert-info" th:if="${info != null}" th:text="${info}">
+</div> 
+ 
+</header> <div class="container"></div> <footer th:fragment="footer" class="container"> <script th:src="@{/js/bootstrap.min.js}"></script> <script th:src="@{/js/jquery-3.3.1.min.js}"></script> </footer> </body> </html>

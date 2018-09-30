@@ -1,0 +1,47 @@
+<!DOCTYPE html> 
+	<html xmlns:th="http://www.thymeleaf.org"> 
+		<head> 
+			<meta charset="UTF-8" /> 
+			<title>Proveedores</title> 
+			<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  /> 
+		</head> 
+	<body> 
+		<div class="container"> 
+			<table class="table">  
+				<thead>   
+					<tr>      
+						<th scope="col">id</th>      
+						<th scope="col">Nombre</th>      
+						<th scope="col">Nit</th>      
+						<th scope="col">Direccion</th>      
+						<th scope="col">Telefono</th>   
+					</tr>  
+				</thead>  <!--tfoot>   <tr> 
+				 <td>Sum</td>      <td>$180</td>   </tr>  </tfoot-->  
+					<tbody>   
+						 <tr th:each="proveedor: ${proveedores}">      
+							 <td th:text="${proveedor.id}"/>      
+							 <td th:text="${proveedor.proveedorName}" />      
+							 <td th:text="${proveedor.nit_emp}" />      
+							 <td th:text="${proveedor.dir_emp}" /> 
+							 <td th:text="${proveedor.tel_emp}" />   
+							 <td th:text="${proveedor.email}" />
+							 <td th:text="${proveedor.nombre_contacto}" /> 
+							 <td th:text="${proveedor.tel_contacto}" />    
+							 <!--<td th:text="${proveedor.createAt}" />   -->   
+							 <td> <a th:href="@{/proveedor/form/} + ${proveedor.id}" th:text="'Editar'" class="btn btn-primary btn-xs" >
+							 </a>
+							 </td>      
+							 <td> 
+							 <a th:href="@{/proveedor/eliminar/} + ${proveedor.id}" th:text="'Eliminar'" class="btn btn-danger btn-xs" onclick="return confirm('Estas seguro?')" >
+							 </a>
+							 </td>   
+						 </tr>  
+					</tbody> 
+			</table> 
+		</div> 
+	 
+			<a th:href="@{/proveedor/form}">Crear proveedor</a> 
+	 
+	</body> 
+</html>
